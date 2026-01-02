@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Sage green palette */
+    --sage-50: 133 22% 95%;
+    --sage-100: 133 22% 90%;
+    --sage-200: 133 22% 80%;
+    --sage-300: 133 22% 70%;
+    --sage-400: 133 22% 59%;
+    --sage-500: 133 25% 49%;
+    --sage-600: 133 28% 39%;
+    
+    /* Cream/warm neutrals */
+    --cream-50: 40 33% 98%;
+    --cream-100: 40 28% 96%;
+    --cream-200: 38 25% 92%;
+    --cream-300: 36 20% 85%;
+    
+    /* Charcoal text */
+    --charcoal-50: 220 10% 70%;
+    --charcoal-100: 220 12% 50%;
+    --charcoal-200: 220 14% 35%;
+    --charcoal-300: 220 15% 25%;
+    --charcoal-400: 220 16% 18%;
+    --charcoal-500: 220 18% 12%;
+
+    --background: var(--cream-50);
+    --foreground: var(--charcoal-400);
+
+    --card: 0 0% 100%;
+    --card-foreground: var(--charcoal-400);
+
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--charcoal-400);
+
+    --primary: var(--sage-400);
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: var(--cream-200);
+    --secondary-foreground: var(--charcoal-300);
+
+    --muted: var(--cream-200);
+    --muted-foreground: var(--charcoal-100);
+
+    --accent: var(--sage-100);
+    --accent-foreground: var(--sage-600);
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: var(--cream-300);
+    --input: var(--cream-300);
+    --ring: var(--sage-400);
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--sage-100)) 0%, hsl(var(--cream-100)) 50%, hsl(var(--sage-50)) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(var(--cream-100)) 100%);
+    --gradient-button: linear-gradient(135deg, hsl(var(--sage-400)) 0%, hsl(var(--sage-500)) 100%);
+    
+    --shadow-soft: 0 4px 20px -4px hsl(var(--sage-400) / 0.15);
+    --shadow-card: 0 8px 32px -8px hsl(var(--charcoal-400) / 0.1);
+    --shadow-elevated: 0 16px 48px -12px hsl(var(--charcoal-400) / 0.15);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: var(--charcoal-500);
+    --foreground: var(--cream-100);
+    --card: var(--charcoal-400);
+    --card-foreground: var(--cream-100);
+    --primary: var(--sage-400);
+    --primary-foreground: var(--charcoal-500);
+    --secondary: var(--charcoal-300);
+    --secondary-foreground: var(--cream-200);
+    --muted: var(--charcoal-300);
+    --muted-foreground: var(--charcoal-50);
+    --accent: var(--sage-600);
+    --accent-foreground: var(--sage-100);
+    --border: var(--charcoal-300);
+    --input: var(--charcoal-300);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fraunces', serif;
+  }
+}
+
+@layer utilities {
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+  
+  .gradient-button {
+    background: var(--gradient-button);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+}
+
+@layer components {
+  .animate-scan {
+    animation: scan 2s ease-in-out infinite;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-fade-up {
+    animation: fadeUp 0.5s ease-out forwards;
+  }
+}
+
+@keyframes scan {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+}
+
+.pulse-ring {
+  animation: pulse-ring 1.5s ease-in-out infinite;
+}
